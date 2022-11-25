@@ -233,3 +233,4 @@ def start():
     report = report(stats, vacancy_name)
     report.generate_pdf()
 
+start()
