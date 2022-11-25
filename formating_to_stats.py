@@ -3,6 +3,7 @@ import csv
 import math
 from time import sleep
 import pdfkit
+import report as report
 from jinja2 import Environment, FileSystemLoader
 import matplotlib
 import tkinter
@@ -222,12 +223,13 @@ def read_csv(filename):
         data_set.vacancies = [Vacancy(**{k: v for k, v in zip(header, line)}) for line in reader if len(line) == len(header) and all(line)]
     return data_set
 
+def start():
+    file_name = input('Введите название файла: ')
+    vacancy_name = input('Введите название профессии: ')
+    data_set = read_csv(file_name)
+    stats = data_set.get_stats(vacancy_name)
+    data_set.print_stats(vacancy_name, stats)
 
-file_name = input('Введите название файла: ')
-vacancy_name = input('Введите название профессии: ')
-data_set = read_csv(file_name)
-stats = data_set.get_stats(vacancy_name)
-data_set.print_stats(vacancy_name, stats)
+    report = report(stats, vacancy_name)
+    report.generate_pdf()
 
-report = report(stats, vacancy_name)
-report.generate_pdf()
