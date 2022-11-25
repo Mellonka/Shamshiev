@@ -224,9 +224,9 @@ def read_csv(filename):
     return data_set
 
 def start():
-    file_name = input('Введите название файла: ')
+    filename = input('Введите название файла: ')
     vacancy_name = input('Введите название профессии: ')
-    data_set = read_csv(file_name)
+    data_set = read_csv(filename)
     stats = data_set.get_stats(vacancy_name)
     data_set.print_stats(vacancy_name, stats)
 
