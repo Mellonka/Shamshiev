@@ -1,16 +1,113 @@
 import csv
 
-salary_by_year = {2007: 38916, 2008: 43646, 2009: 42492, 2010: 43846, 2011: 47451, 2012: 48243, 2013: 51510, 2014: 50658, 2015: 52696, 2016: 62675, 2017: 60935, 2018: 58335, 2019: 69467, 2020: 73431, 2021: 82690, 2022: 91795}
-vacancy_count_by_year = {2007: 2196, 2008: 17549, 2009: 17709, 2010: 29093, 2011: 36700, 2012: 44153, 2013: 59954, 2014: 66837, 2015: 70039, 2016: 75145, 2017: 82823, 2018: 131701, 2019: 115086, 2020: 102243, 2021: 57623, 2022: 18294}
-selec_salary_by_year = {2007: 40641, 2008: 48428, 2009: 48109, 2010: 49577, 2011: 52794, 2012: 58341, 2013: 57004, 2014: 58768, 2015: 53326, 2016: 54236, 2017: 56558, 2018: 61080, 2019: 71288, 2020: 80145, 2021: 87473, 2022: 91340}
-selec_vacancy_count_by_year = {2007: 34, 2008: 196, 2009: 171, 2010: 328, 2011: 418, 2012: 374, 2013: 420, 2014: 504, 2015: 749, 2016: 911, 2017: 1201, 2018: 1578, 2019: 1482, 2020: 1349, 2021: 805, 2022: 305}
-salary_by_city = {'Москва': 76970, 'Санкт-Петербург': 65286, 'Новосибирск': 62254, 'Екатеринбург': 60962, 'Казань': 52580, 'Краснодар': 51644, 'Челябинск': 51265, 'Самара': 50994, 'Пермь': 48089, 'Нижний Новгород': 47662}
-frac_by_city = {'Москва': 0.3246, 'Санкт-Петербург': 0.1197, 'Новосибирск': 0.0271, 'Казань': 0.0237, 'Нижний Новгород': 0.0232, 'Ростов-на-Дону': 0.0209, 'Екатеринбург': 0.0207, 'Краснодар': 0.0185, 'Самара': 0.0143, 'Воронеж': 0.0141}
+class Vacancy:
+    def __init__(self, **kwargs):
+        self.salary_currency = kwargs['salary_currency']
+        self.area_name = kwargs['area_name']
+        self.name = kwargs['name']
+        self.__set_published_at(kwargs['published_at'])
+        self.salary = (float(kwargs['salary_from']) + float(kwargs['salary_to'])) // 2
 
-path = r'files/'
-for year in salary_by_year:
-    with open(path+f'{year}_file.csv', 'w', encoding='utf-8', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(['year', 'salary', 'vacancy count', 'selected salary', 'selected_vacancy_count'])
-        writer.writerow([year, salary_by_year[year], vacancy_count_by_year[year], selec_salary_by_year[year], selec_vacancy_count_by_year[year]])
+    def __set_published_at(self, published_at):
+        spliten = published_at.split('T')
+        date = spliten[0].split('-')
+        self.year = int(date[0])
 
+
+class DataSet:
+    currency_to_rub = {
+        "AZN": 35.68,
+        "BYR": 23.91,
+        "EUR": 59.90,
+        "GEL": 21.74,
+        "KGS": 0.76,
+        "KZT": 0.13,
+        "RUR": 1,
+        "UAH": 1.64,
+        "USD": 60.66,
+        "UZS": 0.0055}
+
+    def __init__(self, header):
+        self.header = header
+        self.vacancies: list[Vacancy] = []
+
+    def print_stats(self, vacancy_name, stats=None):
+        if stats is None:
+            stats = self.get_stats(vacancy_name)
+
+        print('Динамика уровня зарплат по годам:', stats['salary_stat'])
+        print('Динамика количества вакансий по годам:', stats['vacancy_count_stat'])
+        print('Динамика уровня зарплат по годам для выбранной профессии:', stats['selected_salary_stat'])
+        print('Динамика количества вакансий по годам для выбранной профессии:', stats['selected_count_stat'])
+        print('Уровень зарплат по городам (в порядке убывания):',
+              {k: stats['area_salary_stat'][k] for i, k in zip(range(10), stats['area_salary_stat'])})
+        print('Доля вакансий по городам (в порядке убывания):', {k: stats['doly_stat'][k] for i, k in zip(range(10), stats['doly_stat'])})
+
+    def get_stats(self, vacancy_name):
+        vacancies = self.vacancies
+        doly_stat = dict()
+        salary_stat = dict()
+        vacancy_count_stat = dict()
+        selected_salary_stat = dict()
+        selected_count_stat = dict()
+        area_salary_stat = dict()
+        area_count_stat = dict()
+        for vacancy in vacancies:
+            salary = int(vacancy.salary * DataSet.currency_to_rub[vacancy.salary_currency])
+            if vacancy.area_name not in doly_stat:
+                doly_stat[vacancy.area_name] = 0
+                area_salary_stat[vacancy.area_name] = 0
+                area_count_stat[vacancy.area_name] = 0
+            doly_stat[vacancy.area_name] += 1
+            area_salary_stat[vacancy.area_name] += salary
+            area_count_stat[vacancy.area_name] += 1
+
+            if vacancy.year not in salary_stat:
+                salary_stat[vacancy.year] = 0
+                vacancy_count_stat[vacancy.year] = 0
+                selected_salary_stat[vacancy.year] = 0
+                selected_count_stat[vacancy.year] = 0
+            salary_stat[vacancy.year] += salary
+            vacancy_count_stat[vacancy.year] += 1
+            if vacancy_name in vacancy.name:
+                selected_salary_stat[vacancy.year] += salary
+                selected_count_stat[vacancy.year] += 1
+
+        doly_stat = {k: doly_stat[k] / len(vacancies) for k in doly_stat if doly_stat[k] >= int(len(vacancies) / 100)}
+        doly_stat = {k: round(doly_stat[k], 4) for k in sorted(doly_stat, key=lambda k: -doly_stat[k])}
+        salary_stat = {k: salary_stat[k] // vacancy_count_stat[k] for k in sorted(salary_stat)}
+        selected_salary_stat = {k: selected_salary_stat[k] // selected_count_stat[k] if selected_count_stat[k] != 0 else 0 for k in sorted(selected_salary_stat)}
+        area_salary_stat = {k: area_salary_stat[k] // area_count_stat[k] for k in area_salary_stat if k in doly_stat}
+        area_salary_stat = {k: area_salary_stat[k] for k in sorted(area_salary_stat, key=lambda k: -area_salary_stat[k])}
+        return {'doly_stat': doly_stat, 'vacancy_count_stat': vacancy_count_stat, 'salary_stat': salary_stat, 'area_salary_stat': area_salary_stat, 'selected_salary_stat': selected_salary_stat, 'selected_count_stat': selected_count_stat}
+
+def read_csv(filename):
+    with open(filename, encoding='utf-8-sig') as file:
+        reader = csv.reader(file)
+        header = next(reader)
+        data_set = DataSet(header)
+        data_set.vacancies = [Vacancy(**{k: v for k, v in zip(header, line)}) for line in reader if len(line) == len(header) and all(line)]
+    return data_set
+
+
+def separate_by_year(file_name):
+    files = {}
+    writers = {}
+    path = r'files/'
+    with open(file_name, encoding='utf-8-sig') as globfile:
+        reader = csv.reader(globfile)
+        header = next(reader)
+        for row in reader:
+            if len(row) != len(header) or not all(row):
+                continue
+            year = row[5].split('-')[0]
+            if year not in files:
+                files[year] = open(f'{path}{year}_chank.csv', 'w', newline='', encoding='utf-8-sig')
+                writers[year] = csv.writer(files[year])
+                writers[year].writerow(header)
+            writers[year].writerow(row)
+    for year in files:
+        files[year].close()
+
+file_name = input('Введите название файла: ')
+separate_by_year(file_name)
