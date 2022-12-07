@@ -3,9 +3,12 @@
 ## 3.2.1
 ### Директория с генерированными файлами
 
-![1](https://user-images.githubusercontent.com/93040594/206144562-37d879ca-e501-4491-9f8a-3bb326ff5652.png)
+![файлы](https://user-images.githubusercontent.com/93040594/206152503-7f8eec21-65c1-4d0c-9763-e280adcd5746.png)
 
 ### Сам файл csv
 
-![2](https://user-images.githubusercontent.com/93040594/206144522-a219b89d-6fe8-4ac0-8e11-c14ec6d36401.png)
+![сам файл](https://user-images.githubusercontent.com/93040594/206152517-94608a0f-62c3-4b3f-b528-9969f11e83b4.png)
 
+### Основной код
+
+![код](https://user-images.githubusercontent.com/93040594/206152594-7888c250-7d55-4329-9fad-9b6387b70fbf.png)
