@@ -26,3 +26,18 @@
 
 #### В сумме получается приблизительно 13.5 секунд
 
+## 3.2.3
+
+### concurrent.futures - ProcessPoolExecutor
+
+![image](https://user-images.githubusercontent.com/93040594/206852232-1c655b5c-4a36-4220-9e7e-414e56f65d63.png)
+
+### multiprocessing - Pool
+
+![image](https://user-images.githubusercontent.com/93040594/206852279-eeab5935-9864-45dd-a951-d82a65907d83.png)
+
+### Вывод: работают примерно одинаково, но в виду большей гибкости multiprocessing я оставлю его.
+
+
+
+
