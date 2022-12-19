@@ -20,3 +20,5 @@
 
 ![image](https://user-images.githubusercontent.com/93040594/208484556-3ed3da00-575e-41da-9c49-e9724251009e.png)
 
+### Обрезанная версия лежит в репозитории - slice.csv
+
