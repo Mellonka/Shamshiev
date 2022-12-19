@@ -6,11 +6,11 @@
 
 ![частоты](https://user-images.githubusercontent.com/93040594/208480180-6b61b1ea-f4a7-4008-9e75-896d3029fc67.png)
 
-### Данные по месяцам
+### Ответы по месяцам
 
 ![image](https://user-images.githubusercontent.com/93040594/208481027-df165cb6-b76e-4c5f-b978-f45eecd918ba.png)
 
-### Данные разделённые по месяцам
+### Обработанные ответы по месяцам
 
 ![image](https://user-images.githubusercontent.com/93040594/208484371-6e146417-e16c-4adb-82e9-4f12abfa6bca.png)
 
