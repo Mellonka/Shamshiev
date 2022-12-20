@@ -1,5 +1,23 @@
 # Shamshiev
 
+## 3.3.3
+
+### Полученный csv файл (также лежит в репозитории - 19-12-2022.csv)
+
+![image](https://user-images.githubusercontent.com/93040594/208689876-f0f2290c-482f-4e92-a21a-c3516e36d66b.png)
+
+### Код лежит в репозитории - 3.3.3.py
+
+
+## 3.3.2
+
+### Обработанный csv файл
+
+![image](https://user-images.githubusercontent.com/93040594/208484556-3ed3da00-575e-41da-9c49-e9724251009e.png)
+
+### Обрезанная версия лежит в репозитории - slice.csv
+
+
 ## 3.3.1
 
 ### Частотный словарь
@@ -14,11 +32,5 @@
 
 ![image](https://user-images.githubusercontent.com/93040594/208484371-6e146417-e16c-4adb-82e9-4f12abfa6bca.png)
 
-## 3.3.2
 
-### Обработанный csv файл
-
-![image](https://user-images.githubusercontent.com/93040594/208484556-3ed3da00-575e-41da-9c49-e9724251009e.png)
-
-### Обрезанная версия лежит в репозитории - slice.csv
 
