@@ -1,4 +1,11 @@
 # Shamshiev
+ 
+## 3.4.2
+
+### Pdf файл
+![image](https://user-images.githubusercontent.com/93040594/209572593-032f0c4d-8dec-45e0-b554-52dd29cd72c9.png)
+
+### Также прикреплён в репозитории
 
 
 ## 3.4.1
