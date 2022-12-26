@@ -24,35 +24,27 @@ with open(filename, encoding='utf-8-sig') as rfile, open('new_file.csv', 'w', en
         year, month = d['published_at'].split('-')[:2]
         curr_val = compile[year, month]
         new_row = []
-        if not any((d['salary_from'], d['salary_to'])) or d['salary_currency'] == '' or d['salary_currency'] not in curr_val or curr_val[d['salary_currency']] == '':
-            for k in new_head:
-                if k == 'salary':
-                    new_row.append('')
-                else:
-                    new_row.append(d[k])
-            writer.writerow(new_row)
-            continue
-        salary = 0
-        count = 0
-        if d['salary_from'] != '':
-            salary += float(d['salary_from'])
-            count += 1
-        if d['salary_to'] != '':
-            salary += float(d['salary_to'])
-            count += 1
-        currency = d['salary_currency']
-        if currency != 'RUR':
-            salary *= float(curr_val[currency])
+        salary = ''
+        if (d['salary_from'] != '' or d['salary_to'] != '') and (d['salary_currency'] == "RUR" or (d['salary_currency'] in curr_val and curr_val[d['salary_currency']] != '')):
+            salary = 0
+            count = 0
+            if d['salary_from'] != '':
+                salary += float(d['salary_from'])
+                count += 1
+            if d['salary_to'] != '':
+                salary += float(d['salary_to'])
+                count += 1
+            currency = d['salary_currency']
+            if currency != 'RUR':
+                salary *= float(curr_val[currency])
+            salary //= count
 
-        salary //= count
         for k in new_head:
             if k == 'salary':
                 new_row.append(salary)
             else:
                 new_row.append(d[k])
         writer.writerow(new_row)
-
-
 
 
 
