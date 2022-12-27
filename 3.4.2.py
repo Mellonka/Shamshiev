@@ -38,4 +38,8 @@ def get_stats(filename, vacancy_name):
     print('Динамика количества вакансий по годам:', count_stat)
     print('Динамика количества вакансий по годам для выбранной профессии:',selected_count_stat)
 
-get_stats('file_with_pandas.csv', 'Аналитик')
+
+filename = input()
+vacancy_name = input()
+
+get_stats(filename, vacancy_name)
