@@ -1,5 +1,15 @@
 # Shamshiev
- 
+
+## 3.5.1
+
+### База данных
+![image](https://user-images.githubusercontent.com/93040594/209862262-17bd8885-8a69-46f2-8968-fe47232de7b7.png)
+
+### Типы данных
+![image](https://user-images.githubusercontent.com/93040594/209862317-a8edc3be-a4f9-4e18-b383-e6324e67d857.png)
+
+### Файл и код лежит в репозитории
+
 ## 3.4.3
 ### Pdf файл
 ![image](https://user-images.githubusercontent.com/93040594/209670857-d4d98a74-1b1c-4862-960d-368d29bf5bee.png)
