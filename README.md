@@ -8,7 +8,7 @@
 ### Типы данных
 ![image](https://user-images.githubusercontent.com/93040594/209862317-a8edc3be-a4f9-4e18-b383-e6324e67d857.png)
 
-### Файл и код лежит в репозитории
+### Файл(python_proj.db) и код(3.5.1.py) лежит в репозитории
 
 ## 3.4.3
 ### Pdf файл
