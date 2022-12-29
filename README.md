@@ -3,7 +3,7 @@
 ## 3.5.1
 
 ### База данных
-![image](https://user-images.githubusercontent.com/93040594/209862262-17bd8885-8a69-46f2-8968-fe47232de7b7.png)
+![image](https://user-images.githubusercontent.com/93040594/209928964-2aa9ee2f-2da3-4889-9617-b3094c23a98e.png)
 
 ### Типы данных
 ![image](https://user-images.githubusercontent.com/93040594/209928858-d14b5730-3c87-4510-90c7-3c11341265f8.png)
