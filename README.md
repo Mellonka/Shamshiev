@@ -1,5 +1,15 @@
 # Shamshiev
 
+## 3.5.3
+
+### Вывод программы(мое имя есть в пути проекта). Код(3.5.3.py) лежит в репозитории:
+![image](https://user-images.githubusercontent.com/93040594/210079804-a0e3834f-c23b-497e-aa65-df94da58c97e.png)
+![2](https://user-images.githubusercontent.com/93040594/210079703-7fe629a3-4c2b-4f82-b908-a8c8d43ba9e4.png)
+![3](https://user-images.githubusercontent.com/93040594/210079695-ff828e3f-854f-4006-ad89-cb2f6c1f8fe2.png)
+![4](https://user-images.githubusercontent.com/93040594/210079698-2db5babd-7d06-434a-b472-2c2f0dbdb62b.png)
+![5](https://user-images.githubusercontent.com/93040594/210079699-70039bcd-c8bc-4267-8b46-518d4b6f38e7.png)
+ 
+ 
 ## 3.5.2
 
 ### База данных
